@@ -1,7 +1,6 @@
 package imperative;
 
-import static imperative.Main.Gender.FEMALE;
-import static imperative.Main.Gender.MALE;
+import static imperative.Main.Gender.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,10 @@ public class Main {
 		// using predicate object
 		Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
 
-		List<Person> femalesTwo = people.stream().filter(personPredicate).collect(Collectors.toList());
+		List<Person> femalesTwo = people.stream()
+				.filter(personPredicate)
+				.collect(Collectors.toList());
+		
 		femalesTwo.forEach(System.out::println);
 	}
 
