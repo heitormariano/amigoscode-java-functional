@@ -1,6 +1,6 @@
-package imperative;
+package approaches.overview;
 
-import static imperative.Main.Gender.*;
+import static approaches.overview.Main.Gender.*;
 
 import java.util.ArrayList;
 import java.util.List;

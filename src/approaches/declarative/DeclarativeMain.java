@@ -1,4 +1,4 @@
-package imperative;
+package approaches.declarative;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -11,20 +11,17 @@ public class DeclarativeMain {
 		List<Person> people = List.of(new Person("Hector", 34), new Person("Keyth", 35), new Person("John", 16),
 				new Person("Mathew", 17));
 
-		System.out.println("over Eighteen");
-		people.stream()
-		.filter(person -> person.age >= 18)
-		.collect(Collectors.toList())
-		.forEach(System.out::println);
-		
-		//under Eighteen
-		System.out.println("under Eighteen");
+		System.out.println("Printing all elements");
+		people.stream().collect(Collectors.toList()).forEach(System.out::println);
+
+		System.out.println("-- over Eighteen --");
+		people.stream().filter(person -> person.age >= 18).collect(Collectors.toList()).forEach(System.out::println);
+
+		// under Eighteen
+		System.out.println("-- under Eighteen --");
 		Predicate<Person> underEighteen = person -> person.age < 18;
-		Consumer<Person> printPerson = System.out::println;
-		people.stream()
-		.filter(underEighteen)
-		.collect(Collectors.toList())
-		.forEach(printPerson);
+		Consumer<Person> printPerson = person -> System.out.println(person);
+		people.stream().filter(underEighteen).collect(Collectors.toList()).forEach(printPerson);
 
 	}
 
@@ -36,7 +33,7 @@ public class DeclarativeMain {
 			this.name = name;
 			this.age = age;
 		}
-		
+
 		@Override
 		public String toString() {
 			return "Person [Name = " + this.name + ", Age = " + this.age + "]";
